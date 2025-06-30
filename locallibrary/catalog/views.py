@@ -3,13 +3,21 @@ from .models import Book, Author, BookInstance, Genre
  
  
 def index(request):
+    # keyword
+    keyword = 'magic'
     # Generate count of some of the main objects
     num_books = Book.objects.all().count()
     num_instances = BookInstance.objects.all().count() 
     
+    
+    
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     
+    # Available books containing the keyword 'magic' in their title, case insensitive
+    num_books_with_keyword = Book.objects.filter(title__icontains='keyword').count()
+    # Available genres containing the keyword 'magic' in their title, case insensitive
+    num_genres_with_keyword = Genre.objects.filter(name__icontains='keyword').count()
     # count of Authors
     # The 'all()' is implied by default
     num_authors = Author.objects.count()
@@ -19,6 +27,9 @@ def index(request):
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
+        'num_genres_with_keyword': num_genres_with_keyword,
+        'num_books_with_keyword': num_books_with_keyword,
+        
         
     }
     
