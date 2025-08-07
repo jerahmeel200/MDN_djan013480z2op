@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
- 
+from django.views import generic
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = 2
  
 def index(request):
     # keyword
