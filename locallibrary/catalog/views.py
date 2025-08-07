@@ -3,6 +3,13 @@ from .models import Book, Author, BookInstance, Genre
 from django.views import generic
 
 
+class AuthorDetailView(generic.DetailView):
+    model = Author
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
+
 class BookDetailView(generic.DetailView):
     model = Book
 
