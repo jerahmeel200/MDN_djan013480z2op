@@ -22,5 +22,8 @@
   <li><strong>Books with word "magic" :</strong> {{ num_books_with_keyword }}</li>
   <li><strong>Genres with word "magic" :</strong> {{ num_genres_with_keyword }}</li>
 </ul>
+<p>
+  You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+</p>
 
 {% endblock %}
