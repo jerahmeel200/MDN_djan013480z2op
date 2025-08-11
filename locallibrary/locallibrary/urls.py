@@ -24,3 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
      path('catalog/', include('catalog.urls')),
 ] + static(settings.STATIC_URL, dodumenr_root=settings.STATIC_ROOT)
+
+
+# Add Django site authentication urls (for login, logout, password management)
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+

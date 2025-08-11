@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for locallibrary project.
 
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'locallibrary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,3 +123,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/catalog/'
+
+
+# Email backend configuration
+# This will print emails to the console for development purposes.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
